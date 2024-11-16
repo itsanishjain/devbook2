@@ -3,10 +3,7 @@ import { FeedBack } from "./FeedBack";
 
 const navItems = {
   "/": {
-    name: "<Monady Pro Apps>",
-  },
-  "/blog": {
-    name: "Blogs",
+    name: "DevFinder",
   },
   "/about": {
     name: "About us",

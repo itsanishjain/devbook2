@@ -5,6 +5,7 @@ export default async function Home() {
   return (
     <>
       <MetricsDashboard />
+      <Search placeholder="search..." />
     </>
   );
 }
