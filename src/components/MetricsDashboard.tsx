@@ -53,7 +53,7 @@ const MetricsDashboard = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-3xl font-bold tracking-tight">Sponsor Data</h2>
+      <h2 className="text-3xl font-bold tracking-tight">Statssss</h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric, index) => (
           <MetricCard
