@@ -76,7 +76,7 @@ const SponsorDashboard = ({ sponsorsData }: { sponsorsData: SponsorsData }) => {
       <h2 className="text-2xl font-semibold tracking-tight mb-4">
         Sponsor Dashboard
       </h2>
-      <ScrollArea className="h-72">
+      <ScrollArea>
         <div className="">
           <table className="table-auto">
             <thead>
