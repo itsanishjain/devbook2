@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, DollarSign, Calendar } from "lucide-react";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 interface EventAmounts {
   [key: string]: number;
@@ -71,79 +72,81 @@ const SponsorDashboard = ({ sponsorsData }: { sponsorsData: SponsorsData }) => {
   );
 
   return (
-    <div className="w-full">
+    <div className="mt-16 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold tracking-tight mb-4">
         Sponsor Dashboard
       </h2>
-      <div className="">
-        <table className="table-auto">
-          <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-left py-3 px-4 text-gray-600 font-medium">
-                Sponsor
-              </th>
-              <th className="text-right py-3 px-4 text-gray-600 font-medium">
-                Total Spent
-              </th>
-              <th className="text-right py-3 px-4 text-gray-600 font-medium">
-                Events Sponsored
-              </th>
-              <th className="text-right py-3 px-4 text-gray-600 font-medium">
-                Max Amount
-              </th>
-              <th className="w-16 py-3 px-4"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(sponsorsData).map(
-              ([sponsorName, sponsor], index) => (
-                <React.Fragment key={sponsorName}>
-                  <tr
-                    className={`border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition-colors ${
-                      expandedRow === index ? "bg-gray-50" : ""
-                    }`}
-                    onClick={() =>
-                      setExpandedRow(expandedRow === index ? null : index)
-                    }
-                  >
-                    <td className="py-4 px-4">
-                      <span className="text-gray-900 font-medium">
-                        {sponsorName}
-                      </span>
-                    </td>
-                    <td className="py-4 px-4 text-right text-gray-900 font-medium">
-                      ${sponsor.total_spent.toLocaleString()}
-                    </td>
-                    <td className="py-4 px-4 text-right text-gray-900">
-                      {sponsor.events_sponsored.length}
-                    </td>
-                    <td className="py-4 px-4 text-right text-gray-900">
-                      ${sponsor.max_amount.toLocaleString()}
-                    </td>
-                    <td className="py-4 px-4 text-center">
-                      {expandedRow === index ? (
-                        <ChevronUp className="h-5 w-5 inline-block text-gray-500" />
-                      ) : (
-                        <ChevronDown className="h-5 w-5 inline-block text-gray-500" />
-                      )}
-                    </td>
-                  </tr>
-                  {expandedRow === index && (
-                    <tr>
-                      <td colSpan={5} className="p-0">
-                        <DetailPanel
-                          sponsor={sponsor}
-                          sponsorName={sponsorName}
-                        />
+      <ScrollArea className="h-72">
+        <div className="">
+          <table className="table-auto">
+            <thead>
+              <tr className="border-b border-gray-200">
+                <th className="text-left py-3 px-4 text-gray-600 font-medium">
+                  Sponsor
+                </th>
+                <th className="text-right py-3 px-4 text-gray-600 font-medium">
+                  Total Spent
+                </th>
+                <th className="text-right py-3 px-4 text-gray-600 font-medium">
+                  Events Sponsored
+                </th>
+                <th className="text-right py-3 px-4 text-gray-600 font-medium">
+                  Max Amount
+                </th>
+                <th className="w-16 py-3 px-4"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(sponsorsData).map(
+                ([sponsorName, sponsor], index) => (
+                  <React.Fragment key={sponsorName}>
+                    <tr
+                      className={`border-b border-gray-200 hover:bg-gray-50 cursor-pointer transition-colors ${
+                        expandedRow === index ? "bg-gray-50" : ""
+                      }`}
+                      onClick={() =>
+                        setExpandedRow(expandedRow === index ? null : index)
+                      }
+                    >
+                      <td className="py-4 px-4">
+                        <span className="text-gray-900 font-medium">
+                          {sponsorName}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4 text-right text-gray-900 font-medium">
+                        ${sponsor.total_spent.toLocaleString()}
+                      </td>
+                      <td className="py-4 px-4 text-right text-gray-900">
+                        {sponsor.events_sponsored.length}
+                      </td>
+                      <td className="py-4 px-4 text-right text-gray-900">
+                        ${sponsor.max_amount.toLocaleString()}
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        {expandedRow === index ? (
+                          <ChevronUp className="h-5 w-5 inline-block text-gray-500" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 inline-block text-gray-500" />
+                        )}
                       </td>
                     </tr>
-                  )}
-                </React.Fragment>
-              )
-            )}
-          </tbody>
-        </table>
-      </div>
+                    {expandedRow === index && (
+                      <tr>
+                        <td colSpan={5} className="p-0">
+                          <DetailPanel
+                            sponsor={sponsor}
+                            sponsorName={sponsorName}
+                          />
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
+      </ScrollArea>
     </div>
   );
 };
