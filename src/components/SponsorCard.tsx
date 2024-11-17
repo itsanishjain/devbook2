@@ -75,8 +75,8 @@ const SponsorDashboard = ({ sponsorsData }: { sponsorsData: SponsorsData }) => {
       <h2 className="text-2xl font-semibold tracking-tight mb-4">
         Sponsor Dashboard
       </h2>
-      <div className="rounded-lg border border-gray-200 overflow-hidden bg-white">
-        <table className="w-full">
+      <div className="">
+        <table className="table-auto">
           <thead>
             <tr className="border-b border-gray-200">
               <th className="text-left py-3 px-4 text-gray-600 font-medium">
